@@ -2,6 +2,7 @@ import React from "react";
 import NewWineForm from "./NewWineForm";
 import WineDetail from "./WineDetails";
 import WineList from "./WineList";
+import EditWineForm from "./EditWineForm";
 
 class WineControl extends React.Component {
 
@@ -10,7 +11,8 @@ class WineControl extends React.Component {
     this.state = {
       pageView: false,
       mainWineList: [],
-      selectedWine: null
+      selectedWine: null,
+      editing: false
     }
   }
 
@@ -25,6 +27,10 @@ class WineControl extends React.Component {
         pageView: !prevState.pageView
       }));
     }
+  }
+
+  handleEditClick = () => {
+    this.setState({editing: true});
   }
 
   handleAddingNewWineToList = (newWine) => {
@@ -48,8 +54,12 @@ class WineControl extends React.Component {
   render() {
     let currentPage = null;
     let buttonText = null;
-    if (this.state.selectedWine !== null) {
-      currentPage = <WineDetail wineObject = {this.state.selectedWine} onClickingDelete={this.handleDeletingWine}/>
+
+    if(this.state.editing === true) {
+      currentPage = <EditWineForm wineObject={this.state.selectedWine} />
+      buttonText="Return to List";
+    } else if (this.state.selectedWine !== null) {
+      currentPage = <WineDetail wineObject = {this.state.selectedWine} onClickingDelete={this.handleDeletingWine} onClickingEdit = {this.handleEditClick}/>
       buttonText="Return to List"
     } else if (this.state.pageView) {
       currentPage = <NewWineForm onNewWineCreation = {this.handleAddingNewWineToList}/>
