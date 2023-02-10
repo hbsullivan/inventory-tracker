@@ -37,11 +37,19 @@ class WineControl extends React.Component {
     this.setState({selectedWine: selectedWine});
   }
 
+  handleDeletingWine = (id) => {
+    const newMainWineList = this.state.mainWineList.filter(wine => wine.id !== id);
+    this.setState({
+      mainWineList: newMainWineList,
+      selectedWine: null
+    });
+  }
+
   render() {
     let currentPage = null;
     let buttonText = null;
     if (this.state.selectedWine !== null) {
-      currentPage = <WineDetail wineObject = {this.state.selectedWine}/>
+      currentPage = <WineDetail wineObject = {this.state.selectedWine} onClickingDelete={this.handleDeletingWine}/>
       buttonText="Return to List"
     } else if (this.state.pageView) {
       currentPage = <NewWineForm onNewWineCreation = {this.handleAddingNewWineToList}/>
