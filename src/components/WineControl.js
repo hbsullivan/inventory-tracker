@@ -18,11 +18,16 @@ class WineControl extends React.Component {
     }));
   }
 
+  handleAddingNewWineToList = (newWine) => {
+    const newMainWineList = this.state.mainWineList.concat(newWine);
+    this.setState({mainWineList: newMainWineList, pageView: false})
+  }
+
   render() {
     let currentPage = null;
     let buttonText = null;
     if (this.state.pageView) {
-      currentPage = <NewWineForm />
+      currentPage = <NewWineForm onNewWineCreation = {this.handleAddingNewWineToList}/>
       buttonText="Return to List"
     } else {
       currentPage = <WineList wineList = {this.state.mainWineList}/>

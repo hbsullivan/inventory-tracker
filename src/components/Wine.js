@@ -7,8 +7,8 @@ export default function Wine(props) {
       <h3>Wine: {props.wine}</h3>
       <h4>Origin: {props.origin}</h4>
       <h4>Vintage: {props.vintage}</h4>
-      <h5>Price: {props.price}</h5>
-      <h5>Quantity: {props.quantity}</h5>
+      <h5>Price: ${props.price}</h5>
+      <h5>Quantity: {props.quantity} bottles</h5>
       <hr />
     </React.Fragment>
   )
