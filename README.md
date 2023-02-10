@@ -2,7 +2,7 @@
 
 #### By Henry Sullivan
 
-#### A web app that tracks inventory for a shop.
+#### A web app that tracks inventory for a wine shop.
 ***
 
 ## Technologies Used
@@ -31,12 +31,11 @@ This application allows for a store owner to keep track of inventory, in this ca
 ```
 npm install
 npm run start
-
 ```
 ***
 ## Known Bugs
 
-* Picture is far too large if window is in full screen.
+* Could not get picture to resize correctly.
 * If you find a bug, please email me at  [sullivanbhenry@gmail.com](mailto:sullivanbhenry@gmail.com) and include:
   * BUG: _A brief description of the bug_
   * FIX: _Suggestion for solution (if you have one!)_

@@ -95,7 +95,7 @@ class WineControl extends React.Component {
       buttonText="Return to List"
     } else {
       currentPage = <WineList wineList = {this.state.mainWineList} onWineSelection = {this.handleChangingselectedWine}/>
-      buttonText = "Add Wine"
+      buttonText = "Buy Wine"
     }
     return(
       <React.Fragment>
