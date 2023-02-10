@@ -61,6 +61,25 @@ class WineControl extends React.Component {
     });
   }
 
+  handleSellWine = (wineToSell) => {
+    if(wineToSell.quantity <= 0){
+      let newQuantity = { ...wineToSell, quantity: 0 }
+      const soldMainWineList = this.state.mainWineList.filter(wine => wine.id !== this.state.selectedWine.id).concat(newQuantity);
+      this.setState({
+        mainWineList: soldMainWineList,
+        selectedWine: null
+      })
+    } else {
+      let number = parseInt(wineToSell.quantity);
+      let newQuantity = { ...wineToSell, quantity: (number - 1) }
+      const soldMainWineList = this.state.mainWineList.filter(wine => wine.id !== this.state.selectedWine.id).concat(newQuantity);
+      this.setState({
+        mainWineList: soldMainWineList,
+        selectedWine: null
+      })
+    }
+  }
+
   render() {
     let currentPage = null;
     let buttonText = null;
@@ -69,7 +88,7 @@ class WineControl extends React.Component {
       currentPage = <EditWineForm wineObject={this.state.selectedWine} onEditWine = {this.handleEditingWineInList}/>
       buttonText="Return to List";
     } else if (this.state.selectedWine !== null) {
-      currentPage = <WineDetail wineObject = {this.state.selectedWine} onClickingDelete={this.handleDeletingWine} onClickingEdit = {this.handleEditClick}/>
+      currentPage = <WineDetail wineObject = {this.state.selectedWine} onClickingDelete={this.handleDeletingWine} onClickingEdit = {this.handleEditClick} sell={this.handleSellWine}/>
       buttonText="Return to List"
     } else if (this.state.pageView) {
       currentPage = <NewWineForm onNewWineCreation = {this.handleAddingNewWineToList}/>

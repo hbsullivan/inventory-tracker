@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function WineDetail(props){
-  const { wineObject, onClickingDelete, onClickingEdit } = props;
+  const { wineObject, onClickingDelete, onClickingEdit, sell } = props;
 
   return (
     <React.Fragment>
@@ -14,6 +14,7 @@ function WineDetail(props){
       <h4>Quantity: {wineObject.quantity} bottles</h4>
       <button onClick={()=>onClickingEdit(wineObject.id)}>Update Wine</button>
       <button onClick={()=>onClickingDelete(wineObject.id)}>Remove from Inventory</button>
+      <button onClick={()=>sell(wineObject)}>Sell Wine</button>
       <hr />
     </React.Fragment>
   );
@@ -22,7 +23,8 @@ function WineDetail(props){
 WineDetail.propTypes = {
   wineObject: PropTypes.object,
   onClickingDelete: PropTypes.func,
-  onClickingEdit: PropTypes.func
+  onClickingEdit: PropTypes.func,
+  sell: PropTypes.func
 }
 
 export default WineDetail;
