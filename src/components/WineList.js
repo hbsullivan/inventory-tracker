@@ -8,6 +8,7 @@ export default function WineList(props) {
       <hr />
       {props.wineList.map((item) => 
         <Wine 
+        whenWineClicked = {props.onWineSelection}
         wine={item.wine}
         origin={item.origin}
         price={item.price}
@@ -21,5 +22,6 @@ export default function WineList(props) {
 }
 
 WineList.propTypes = {
-  wineList: PropTypes.array
+  wineList: PropTypes.array,
+  onWineSelection: PropTypes.func
 }
