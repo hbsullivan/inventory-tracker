@@ -20,7 +20,8 @@ class WineControl extends React.Component {
     if(this.state.selectedWine !== null) {
       this.setState({
         pageView: false,
-        selectedWine: null
+        selectedWine: null,
+        editing: false
       });
     } else {
       this.setState(prevState => ({
@@ -51,12 +52,21 @@ class WineControl extends React.Component {
     });
   }
 
+  handleEditingWineInList = (wineToEdit) => {
+    const editedMainWineList = this.state.mainWineList.filter(wine => wine.id !== this.state.selectedWine.id).concat(wineToEdit);
+    this.setState({
+      mainWineList: editedMainWineList,
+      editing: false, 
+      selectedWine: null
+    });
+  }
+
   render() {
     let currentPage = null;
     let buttonText = null;
 
     if(this.state.editing === true) {
-      currentPage = <EditWineForm wineObject={this.state.selectedWine} />
+      currentPage = <EditWineForm wineObject={this.state.selectedWine} onEditWine = {this.handleEditingWineInList}/>
       buttonText="Return to List";
     } else if (this.state.selectedWine !== null) {
       currentPage = <WineDetail wineObject = {this.state.selectedWine} onClickingDelete={this.handleDeletingWine} onClickingEdit = {this.handleEditClick}/>

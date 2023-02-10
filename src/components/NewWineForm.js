@@ -22,6 +22,7 @@ function NewWineForm(props){
       <ReusableForm
       formSubmissionHandler={handleNewWineFormSubmission}
       buttonText="Add Wine to Inventory" />
+      <hr />
     </React.Fragment>
   );
 }
