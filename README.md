@@ -17,7 +17,7 @@
 ***
 ## Description
 
-This application allows for a store owner to keep track of inventory, in this case, bottles of wine. The user can add bottles of wine to the inventory. They can also delete the bottle, update the information about the bottle, and sell a bottle. Selling a bottle will decrease the quanitity of specified bottle.
+This application allows for a store owner to keep track of inventory, in this case, bottles of wine. The user can add bottles of wine to the inventory. They can also delete the bottle, update the information about the bottle, and sell a bottle. Selling a bottle will decrease the quanitity of specified bottle by 1.
 
 ### Component Diagram
 
